@@ -1,0 +1,63 @@
+{
+  "record": {
+    "schemaVersion": "fenrua.pn521.genesis.case.v1",
+    "suiteId": "fenrua-pn521-genesis-v1",
+    "ordinal": 8,
+    "caseId": "genesis-08-order-modulus-rejected",
+    "classification": "boundary-reject",
+    "primitive": "P/N521",
+    "scopeStatement": "P/N521 is tested only against its declared encodings, moduli, arithmetic, and constraint invariants.",
+    "domain": "N521_ORDER",
+    "operation": "nonzero-range-check",
+    "input": {
+      "candidateLimbsLe64": [
+        "13506215149420700681",
+        "4302566813442262958",
+        "9208736750959699408",
+        "5874531763869423211",
+        "18446744073709551610",
+        "18446744073709551615",
+        "18446744073709551615",
+        "18446744073709551615",
+        "511"
+      ],
+      "companionLimbsLe64": [
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    "expected": {
+      "valid": false
+    },
+    "actual": {
+      "backend": "circom-p521-signature-range",
+      "implementation": "p521_signature_range",
+      "source": "kernel/circuits/p521_signature_range.circom",
+      "constraintCheck": "pass",
+      "observed": {
+        "valid": false
+      },
+      "artifacts": {
+        "inputSha256": "7acd1027915253d81d63787749e4f7cd616ff9020aa1ae1d812d5a02471fd806",
+        "r1csSha256": "5282371c43be013cf662f4735ee24000ab44966f610c18c3e4406adfabce796c",
+        "wasmSha256": "e6075aa8d05794591d145b282bce3b4bdc1452fda4cc6e9805691a9a67212f87",
+        "witnessSha256": "5fa9882f25129e46b4ae8109d141f89fd01f96cf818d05613014eb95160a5fde"
+      }
+    },
+    "passed": true
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "canonicalization": "FENRUA-CANONICAL-JSON-V1",
+    "scope": "$.record",
+    "canonicalByteLength": 1229,
+    "sha256": "e50e44fe1fe093e6bf9b6e493653c0d0c7f6e6ce92d305c248204f9b8216e555"
+  }
+}

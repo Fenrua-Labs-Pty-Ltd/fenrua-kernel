@@ -1,0 +1,85 @@
+{
+  "record": {
+    "schemaVersion": "fenrua.pn521.genesis.case.v1",
+    "suiteId": "fenrua-pn521-genesis-v1",
+    "ordinal": 10,
+    "caseId": "genesis-10-order-sub-underflow",
+    "classification": "modular-boundary",
+    "primitive": "P/N521",
+    "scopeStatement": "P/N521 is tested only against its declared encodings, moduli, arithmetic, and constraint invariants.",
+    "domain": "N521_ORDER",
+    "operation": "subtract-mod-n",
+    "input": {
+      "leftLimbsLe64": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "rightLimbsLe64": [
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    "expected": {
+      "resultLimbsLe64": [
+        "13506215149420700680",
+        "4302566813442262958",
+        "9208736750959699408",
+        "5874531763869423211",
+        "18446744073709551610",
+        "18446744073709551615",
+        "18446744073709551615",
+        "18446744073709551615",
+        "511"
+      ],
+      "needsAdd": true
+    },
+    "actual": {
+      "backend": "circom-p521-big-sub",
+      "implementation": "p521_big_sub",
+      "source": "kernel/circuits/p521_big_sub.circom",
+      "constraintCheck": "pass",
+      "observed": {
+        "resultLimbsLe64": [
+          "13506215149420700680",
+          "4302566813442262958",
+          "9208736750959699408",
+          "5874531763869423211",
+          "18446744073709551610",
+          "18446744073709551615",
+          "18446744073709551615",
+          "18446744073709551615",
+          "511"
+        ],
+        "needsAdd": true
+      },
+      "artifacts": {
+        "inputSha256": "c3863915ca2e136a94dcc50246c3da18644e3845d09819c93029b53c6aa6979b",
+        "r1csSha256": "3988353d7aeb48e0b0083f0bd3556f48cf2820b7a5ab00e2ecc1dcb1c45ea9e2",
+        "wasmSha256": "e7cd68a2c7121ba49f1331b9439ff8e1926aa535055d30c38132b4a58c09c27d",
+        "witnessSha256": "be14fb08d26cf0f04d623135abbe27b57c3dda8039c6834ebdf1a8c742be983c"
+      }
+    },
+    "passed": true
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "canonicalization": "FENRUA-CANONICAL-JSON-V1",
+    "scope": "$.record",
+    "canonicalByteLength": 1457,
+    "sha256": "df9a9d9c3445825d4e9889b06b785d850103e9611be2d0cb8804d6e732221a67"
+  }
+}

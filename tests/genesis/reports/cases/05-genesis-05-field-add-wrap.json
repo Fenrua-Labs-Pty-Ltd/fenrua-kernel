@@ -1,0 +1,39 @@
+{
+  "record": {
+    "schemaVersion": "fenrua.pn521.genesis.case.v1",
+    "suiteId": "fenrua-pn521-genesis-v1",
+    "ordinal": 5,
+    "caseId": "genesis-05-field-add-wrap",
+    "classification": "modular-boundary",
+    "primitive": "P/N521",
+    "scopeStatement": "P/N521 is tested only against its declared encodings, moduli, arithmetic, and constraint invariants.",
+    "domain": "P521_FIELD",
+    "operation": "add-mod-p",
+    "input": {
+      "leftHex": "0x01fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe",
+      "rightHex": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+    },
+    "expected": {
+      "accepted": true,
+      "resultHex": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "actual": {
+      "backend": "native-cxx-field-element",
+      "implementation": "fenrua::p521::FieldElement",
+      "source": "lib/p521_field_element.cpp",
+      "executableSha256": "b4599b47cde92c7618e64de9b703aa7e7cfdbecdbfb150bbdda05cc6793d9dc2",
+      "observed": {
+        "accepted": true,
+        "resultHex": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      }
+    },
+    "passed": true
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "canonicalization": "FENRUA-CANONICAL-JSON-V1",
+    "scope": "$.record",
+    "canonicalByteLength": 1249,
+    "sha256": "51d216bbbc485acdc917dc27f875abf23e559a8d5dae214037bdb187e528bba4"
+  }
+}

@@ -1,6 +1,6 @@
 # Fenrua Kernel
 
-> **Research-grade P/N521 utility kernel. Not audited. Not production-approved.**
+> **Research-grade P/N521 utility kernel. No external audit. Not production-approved.**
 > Do not use this repository to secure funds, identity, consensus, validators, or authorization.
 
 Fenrua Kernel is a small, evidence-first substrate for P/N521 research. It connects native
@@ -122,6 +122,31 @@ independence, or security.
 Circuit reports must name the exact shape, range, modular-add, or modular-subtract relation they
 exercise. No current relation claims message binding.
 
+### Frozen Genesis verification state
+
+- Source commit: `85ecc97c026b01b576d735501795951dd293b3ca`
+- Genesis cases: 10/10 passed
+- Permanent subtraction regression: passed
+- Native P-field campaign: 500,000 deterministic randomized pairs passed under ASan/UBSan
+- Canonical encoding campaign: 200,000 parse checks passed
+- Digest campaign: 100,000 lowercase SHA-256 round trips passed
+- N-order circuit campaign: 852 addition and 852 subtraction pairs passed against a BigInt oracle
+- N-order range campaign: 1,081 operand pairs passed
+- Public development proofs: two valid proofs accepted; both one-limb public-input mutations rejected
+- Reproduction: all 14 Genesis evidence files matched byte-for-byte in a second clean checkout
+
+The [Genesis manifest](tests/genesis/reports/manifest.json) has record SHA-256
+`bd9ec111888ec32e87a5b60776f0118973848e5c096bbed8f25246e7fd3008cd`.
+The [development-proof report](tests/proofs/evidence/development-proof-report.json) has record
+SHA-256 `18dd205d46186ab6e1aa650eb24d24284df44164abf67cd57d94ececdb83c972`.
+See the [security audit log](SECURITY_AUDIT_LOG.md) for seven resolved findings and the remaining
+research-to-production gates. The machine-readable
+[independent review report](tests/audit/independent-review-report.json) has file SHA-256
+`f7ea51f2e89f4fdc055bbcf491d6e4527c7c2011a3c3da2b5297b66bf64ce9b6`.
+
+These are structured empirical campaigns, not exhaustive proof of correctness or a production
+security certification.
+
 ## Commands
 
 The repository exposes a small command surface:
@@ -129,9 +154,23 @@ The repository exposes a small command surface:
     just build
     just test
     just prove
+    just evidence
 
 Use the command descriptions in the justfile as the executable contract. A skipped dependency or
 proof stage must be reported as skipped or failed, never passed.
+
+## Open challenge
+
+Fenrua publishes this kernel so other researchers can test it, falsify its assumptions, and show
+where it is wrong. A valid counterexample is retained as protocol history and converted into a
+permanent regression before the affected claim can pass again.
+
+No comparative benchmark is required for this initial research release. Future performance work
+will publish absolute, reproducible measurements for bytes, constraints, memory, proving time and
+verification time. The project makes no unsupported “first” or “fastest” claim.
+
+Use a public bug report for safe reproducible failures. Use GitHub private vulnerability reporting
+for any finding whose disclosure could enable exploitation or proof bypass.
 
 ## Read the research record
 

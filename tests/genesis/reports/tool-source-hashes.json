@@ -1,0 +1,178 @@
+{
+  "record": {
+    "schemaVersion": "fenrua.pn521.tool-source-hashes.v1",
+    "suiteId": "fenrua-pn521-genesis-v1",
+    "canonicalization": "FENRUA-CANONICAL-JSON-V1",
+    "canonicalizationSpecification": "UTF-8 JSON; plain-object keys sorted by JavaScript UTF-16 code units; arrays retain order; primitives use JSON.stringify; undefined and non-finite numbers are rejected.",
+    "dependencies": [
+      {
+        "package": "circomlib",
+        "declaredVersion": "2.0.5",
+        "installedVersion": "2.0.5"
+      },
+      {
+        "package": "snarkjs",
+        "declaredVersion": "0.7.6",
+        "installedVersion": "0.7.6",
+        "cliSha256": "6d787e37a4d1a2c6dd6032dadca09c0b3b007d4d4578bb6232a98136555d051a"
+      },
+      {
+        "package": "underscore",
+        "declaredVersion": "1.13.8",
+        "installedVersion": "1.13.8",
+        "resolutionPolicy": "root security override for the snarkjs development dependency graph"
+      }
+    ],
+    "tools": [
+      {
+        "id": "node",
+        "available": true,
+        "version": "v24.18.0",
+        "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"
+      },
+      {
+        "id": "cxx",
+        "available": true,
+        "version": "c++ (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+        "sha256": "7d2751d15c9155129623875208b244eba175d6a75f3c4d2ff21bac8f613f09bd"
+      },
+      {
+        "id": "circom",
+        "available": true,
+        "version": "circom compiler 2.2.3",
+        "sha256": "607d3d8d5b2a58f00434c054b59e6842dc472d48d6a93e51ac7521d49a39e27c"
+      },
+      {
+        "id": "rapidsnark",
+        "available": true,
+        "version": "no-version-flag",
+        "sha256": "1bf0a8ce2d7dc8a527573f0b109b13c8e0421925028591269fb51d4838035df7"
+      }
+    ],
+    "sources": [
+      {
+        "path": "package.json",
+        "sha256": "96c5fb3b0f8366e21eb5f793a6d5aca78626d10fb228ddacb1c02c4f60dc00cd"
+      },
+      {
+        "path": "pnpm-workspace.yaml",
+        "sha256": "33da17e2673445b45d2ab9ab9e7ad2b32f38704a6e15d967b6189c3c76698962"
+      },
+      {
+        "path": "pnpm-lock.yaml",
+        "sha256": "0ddae10166f5fbc27106243fbb25df631478947e94b36b6d0804302c8723f7e3"
+      },
+      {
+        "path": "justfile",
+        "sha256": "761311410af42f8cc8cd5b793c4c6b5211ff5ae2dd3a70b933316417fb5ca57e"
+      },
+      {
+        "path": "include/fenrua/p521/field_element.hpp",
+        "sha256": "f210c5f3ad267e0aa2f060db4b61dc7d5d0655a448dea5b1b9ae04c2ad205934"
+      },
+      {
+        "path": "lib/p521_field_element.cpp",
+        "sha256": "3133e81efb3c21a3a99de40fb80ce4c172ed2bca9d1a5c9d147ce7a034a3d015"
+      },
+      {
+        "path": "kernel/circuits/p521_params.circom",
+        "sha256": "0b7fef0cb5dd653668b94290ef8c9d7111b9b0486e04afbf9f2f76539d97c4b5"
+      },
+      {
+        "path": "kernel/circuits/big_limb.circom",
+        "sha256": "c1a9cbde5da8b1387d84a9b9823c1aae5e7815482ab11ac7dacbc2f563365d56"
+      },
+      {
+        "path": "kernel/circuits/big_compare.circom",
+        "sha256": "10649946c24d807bb38e2609eeaacb67e307864652365b95dc4f2e28cedf1f4b"
+      },
+      {
+        "path": "kernel/circuits/big_add.circom",
+        "sha256": "64266ead4c131610186f362abc6b1ac889af17cd1b29dee8d7a32382a6d46844"
+      },
+      {
+        "path": "kernel/circuits/big_sub.circom",
+        "sha256": "67bacafee6427c50b2059306848a331fa15ffb8e3b9945c4b90df0ecdb903d1e"
+      },
+      {
+        "path": "kernel/circuits/p521_signature_range.circom",
+        "sha256": "715122df893000111ab098a2cd1249cfb7c53f2baac5030b9e6c30b5d0c1f1a1"
+      },
+      {
+        "path": "kernel/circuits/p521_big_add.circom",
+        "sha256": "cf83deefeed9370bca07c569b50659181fb7a927d98617d45e6caf752a2ffaf5"
+      },
+      {
+        "path": "kernel/circuits/p521_big_sub.circom",
+        "sha256": "ee31587be8c73f436a325616467df09ed54cf1200ae2af974fffb0a49b1198f4"
+      },
+      {
+        "path": "regressions/README.md",
+        "sha256": "f04e95cbfd62a7a27f237fb807781a4c354bfbebb69757a547e7d2797152a590"
+      },
+      {
+        "path": "regressions/regression_001_p521_sub_overflow.bin",
+        "sha256": "7d11e62691085056fde7193c23cc7b3ffbfde2171807f820fc94cecf6f19ee5e"
+      },
+      {
+        "path": "tests/genesis-cases.mjs",
+        "sha256": "9a5cf33c10ea9aadf7c52854b3dcb0f2089c40afa6347ba201c4aa05e41954ef"
+      },
+      {
+        "path": "tests/regression-cases.mjs",
+        "sha256": "8d93ad8e8f5a4d7d8452117c3a58ff7d0c8291a100279558d1bcad3d23b753b7"
+      },
+      {
+        "path": "tests/native/pn521_probe.cpp",
+        "sha256": "c43ea32bf4bebbe9ae572c779d12289c87d37e60a0e6de188321ffaf5bb9ad66"
+      },
+      {
+        "path": "tools/canonical-json.mjs",
+        "sha256": "337c333a8511da908419bd1d1e4cc1b536441da46d2fdc5ff46027130225c662"
+      },
+      {
+        "path": "tools/pn521-reference.mjs",
+        "sha256": "4aaaadbed683defc55bca3b1a1c758e675bbe534951e72169854e914b2b770d3"
+      },
+      {
+        "path": "tools/evidence-sources.mjs",
+        "sha256": "ac5ea559d1d2710edbf447eac3e662982025c86fb0faa50223f1d263ebdbf139"
+      },
+      {
+        "path": "tools/generate-regression-fixtures.mjs",
+        "sha256": "78fd9c7528b1a0dfeb37f266233be869ccfb9e63e4794dec82d07113237df66e"
+      },
+      {
+        "path": "tools/tooling.mjs",
+        "sha256": "4f5322016082650e02013265026fa6d62b5b358292b44361436442321194ddc5"
+      },
+      {
+        "path": "tools/build.mjs",
+        "sha256": "919d844cf3467e988484569ffe4a7e212f02314f823ee3244ca0a070bb0ac406"
+      },
+      {
+        "path": "tools/run-genesis.mjs",
+        "sha256": "4fd45b9468dbfd3b2d90f64fa3ae5c8479394a848ac27f792e84168a4f138853"
+      },
+      {
+        "path": "tools/prove.mjs",
+        "sha256": "de3856a180651785653fa4d5ccd6dbce8af44c19a61e7a9d89733f52db8221f5"
+      },
+      {
+        "path": "tools/verify-evidence.mjs",
+        "sha256": "d58c52601b1dac0d22ad86bc8b005ed7862d8e0eb45507d375004afd1997a328"
+      },
+      {
+        "path": "tools/verify-proofs.mjs",
+        "sha256": "0fd7e6dcff369af749ad93475b603bca6f09ff015e5edd70fa82c87ce21d3f7b"
+      }
+    ]
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "canonicalization": "FENRUA-CANONICAL-JSON-V1",
+    "scope": "$.record",
+    "canonicalByteLength": 4660,
+    "sha256": "62a5b9406dffc5228e15317d2f27f7534709a05080ae7946584dddbb869974bd"
+  }
+}

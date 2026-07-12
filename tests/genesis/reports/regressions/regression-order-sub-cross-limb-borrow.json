@@ -1,0 +1,90 @@
+{
+  "record": {
+    "schemaVersion": "fenrua.pn521.regression.v1",
+    "regressionId": "regression-order-sub-cross-limb-borrow",
+    "classification": "permanent-borrow-chain-regression",
+    "primitive": "P/N521",
+    "scopeStatement": "This permanent regression is separate from the exactly ten Genesis cases.",
+    "domain": "N521_ORDER",
+    "operation": "subtract-mod-n",
+    "input": {
+      "fixture": {
+        "path": "regressions/regression_001_p521_sub_overflow.bin",
+        "bytes": 132,
+        "sha256": "7d11e62691085056fde7193c23cc7b3ffbfde2171807f820fc94cecf6f19ee5e",
+        "encoding": "A[66] || B[66], fixed-width unsigned big-endian",
+        "usedByRegressionId": "regression-order-sub-cross-limb-borrow"
+      },
+      "leftLimbsLe64": [
+        "18446744073709551615",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "rightLimbsLe64": [
+        "0",
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    "expected": {
+      "resultLimbsLe64": [
+        "13506215149420700680",
+        "4302566813442262958",
+        "9208736750959699408",
+        "5874531763869423211",
+        "18446744073709551610",
+        "18446744073709551615",
+        "18446744073709551615",
+        "18446744073709551615",
+        "511"
+      ],
+      "needsAdd": true
+    },
+    "actual": {
+      "backend": "circom-p521-big-sub",
+      "implementation": "p521_big_sub",
+      "source": "kernel/circuits/p521_big_sub.circom",
+      "constraintCheck": "pass",
+      "observed": {
+        "resultLimbsLe64": [
+          "13506215149420700680",
+          "4302566813442262958",
+          "9208736750959699408",
+          "5874531763869423211",
+          "18446744073709551610",
+          "18446744073709551615",
+          "18446744073709551615",
+          "18446744073709551615",
+          "511"
+        ],
+        "needsAdd": true
+      },
+      "artifacts": {
+        "inputSha256": "a64c06c4b95f8eccb4fa31660be1ca2f5dace469d112065b692d0011cd1a632c",
+        "r1csSha256": "3988353d7aeb48e0b0083f0bd3556f48cf2820b7a5ab00e2ecc1dcb1c45ea9e2",
+        "wasmSha256": "e7cd68a2c7121ba49f1331b9439ff8e1926aa535055d30c38132b4a58c09c27d",
+        "witnessSha256": "504667d60f63a247cbb584d8ac39c4685edc8030c19fb554e0988099bb0e8b6f"
+      }
+    },
+    "passed": true
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "canonicalization": "FENRUA-CANONICAL-JSON-V1",
+    "scope": "$.record",
+    "canonicalByteLength": 1710,
+    "sha256": "a5c49db6dd40bee3185399b622ff5eb7845501d0a725e7aa561204766a19abfa"
+  }
+}

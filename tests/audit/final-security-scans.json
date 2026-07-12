@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "commit": "85ecc97c026b01b576d735501795951dd293b3ca",
+    "tree": "d3f5e376def63a46a0b76c96f8887a90dbb17f25",
+    "trackedFileCount": 57
+  },
+  "tools": {
+    "pnpm": {
+      "version": "11.11.0",
+      "nodeVersion": "24.18.0",
+      "resolvedCorepackEntryPointSha256": "7c2a67995976b5b592b611d8b236e3b0633bd654fb49aedd96c6eb7ce04c9cbb"
+    },
+    "circomspect": {
+      "version": "0.9.0",
+      "binarySha256": "c70cb2fd5f25aa1055fcf95e30dee3f2410b93313fe4825d7210b9ee4857d7c5"
+    },
+    "semgrep": {
+      "version": "1.169.0",
+      "wrapperSha256": "3bc54d204f89ce8f92b42ee15e5087ad4a547cdc0277dc81dd159f315786b508",
+      "engine": "OSS"
+    },
+    "trivy": {
+      "version": "0.70.0",
+      "image": "aquasec/trivy@sha256:be1190afcb28352bfddc4ddeb71470835d16462af68d310f9f4bca710961a41e",
+      "imageId": "sha256:be1190afcb28352bfddc4ddeb71470835d16462af68d310f9f4bca710961a41e",
+      "dockerClientVersion": "29.6.1",
+      "dockerServerVersion": "29.6.1",
+      "dockerApiVersion": "1.55",
+      "dockerCliSha256": "cb92457611ccecae73e395a97673de28e397eaf020f807d91153960bbfe41b01"
+    }
+  },
+  "scans": {
+    "pnpmAudit": {
+      "command": "pnpm audit --audit-level low",
+      "exitCode": 0,
+      "vulnerabilityCount": 0,
+      "summary": "No known vulnerabilities found"
+    },
+    "circomspect": {
+      "command": "circomspect --level WARNING --library node_modules kernel/circuits/p521_big_add.circom kernel/circuits/p521_big_sub.circom kernel/circuits/p521_signature_range.circom",
+      "exitCode": 0,
+      "analyzedTemplateCount": 3,
+      "issueCount": 0,
+      "summary": "No issues found."
+    },
+    "semgrep": {
+      "command": "semgrep scan --config p/default --json-output /tmp/fenrua-semgrep-default-85ecc97c.json .",
+      "exitCode": 0,
+      "registryRuleCount": 1074,
+      "applicableRuleCount": 240,
+      "trackedFileCount": 46,
+      "findingCount": 0,
+      "blockingFindingCount": 0,
+      "errorCount": 0,
+      "report": {
+        "path": "/tmp/fenrua-semgrep-default-85ecc97c.json",
+        "bytes": 2730,
+        "sha256": "285e873fdce937bdbc5672aaa015b009c8f4db16e2f63ee71404f5fc304ae3fa"
+      }
+    },
+    "trivySecrets": {
+      "commands": [
+        "scanroot=\"$(mktemp -d /tmp/fenrua-trivy-tree-85ecc97c.XXXXXX)\"",
+        "git archive 85ecc97c026b01b576d735501795951dd293b3ca | tar -x -C \"$scanroot\"",
+        "docker run --rm --mount \"type=bind,src=$scanroot,dst=/workspace,readonly\" --mount type=bind,src=/tmp,dst=/reports aquasec/trivy@sha256:be1190afcb28352bfddc4ddeb71470835d16462af68d310f9f4bca710961a41e fs --scanners secret --format json --output /reports/fenrua-trivy-secret-85ecc97c.json /workspace"
+      ],
+      "exitCode": 0,
+      "artifactType": "filesystem",
+      "resultCount": 0,
+      "secretCount": 0,
+      "report": {
+        "path": "/tmp/fenrua-trivy-secret-85ecc97c.json",
+        "bytes": 234,
+        "sha256": "277c53812b799c9d4efc64560238f17d3dab228252815b95140cb2ea7d0aa2a4"
+      }
+    }
+  },
+  "verdict": {
+    "status": "PASS",
+    "blockerCount": 0,
+    "summary": "Zero dependency vulnerabilities, Circomspect issues, Semgrep findings or errors, and Trivy secrets."
+  }
+}

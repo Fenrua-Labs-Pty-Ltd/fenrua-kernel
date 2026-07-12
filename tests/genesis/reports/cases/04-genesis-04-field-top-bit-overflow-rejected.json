@@ -1,0 +1,38 @@
+{
+  "record": {
+    "schemaVersion": "fenrua.pn521.genesis.case.v1",
+    "suiteId": "fenrua-pn521-genesis-v1",
+    "ordinal": 4,
+    "caseId": "genesis-04-field-top-bit-overflow-rejected",
+    "classification": "encoding-reject",
+    "primitive": "P/N521",
+    "scopeStatement": "P/N521 is tested only against its declared encodings, moduli, arithmetic, and constraint invariants.",
+    "domain": "P521_FIELD",
+    "operation": "canonicalize",
+    "input": {
+      "encodingHex": "0x020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "expected": {
+      "accepted": false,
+      "canonicalHex": null
+    },
+    "actual": {
+      "backend": "native-cxx-field-element",
+      "implementation": "fenrua::p521::FieldElement",
+      "source": "lib/p521_field_element.cpp",
+      "executableSha256": "b4599b47cde92c7618e64de9b703aa7e7cfdbecdbfb150bbdda05cc6793d9dc2",
+      "observed": {
+        "accepted": false,
+        "canonicalHex": null
+      }
+    },
+    "passed": true
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "canonicalization": "FENRUA-CANONICAL-JSON-V1",
+    "scope": "$.record",
+    "canonicalByteLength": 868,
+    "sha256": "ddbc5163d37dffeb497dbcd6a4187a51c1ab66839a05d98481791cb5202fbb3c"
+  }
+}

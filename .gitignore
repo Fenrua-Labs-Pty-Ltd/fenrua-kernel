@@ -4,7 +4,7 @@ build/
 .cache/
 
 # Generated proving material; never publish development ceremony secrets.
-artifacts/
+/artifacts/
 *.ptau
 *.zkey
 *.wtns

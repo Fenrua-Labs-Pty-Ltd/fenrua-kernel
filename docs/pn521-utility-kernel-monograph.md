@@ -43,6 +43,11 @@ mesh data plane. Any performance claim must measure the exact binary frame, impl
 hardware, corpus, and comparison boundary; avoiding a legacy encoding is a design property, not by
 itself proof of lower end-to-end latency.
 
+When no genuinely equivalent implementation exists, a comparative benchmark is not required.
+The research record should instead publish absolute reproducible measurements and invite others to
+test the same corpus. Novelty, “first,” and “fastest” are not security properties and are not
+inferred from the absence of a comparator.
+
 ## 2. Research questions
 
 **RQ1 — Representation.** Which limb layout gives the clearest correct native arithmetic while
@@ -220,17 +225,36 @@ Likewise:
 
 ## 9. Results ledger
 
-Populate this section from generated, checked-in evidence. Do not hand-copy digests.
+The checked-in [Genesis manifest](../tests/genesis/reports/manifest.json) is authoritative for the
+ten per-case record and file digests. The [development-proof report](../tests/proofs/evidence/development-proof-report.json)
+is authoritative for proof, verification-key, public-signal and tamper-vector digests.
 
-| Case | Expected | Observed | Report bytes | Report SHA-256 | Notes |
-| --- | --- | --- | ---: | --- | --- |
-| See tests manifest | pending | pending | pending | pending | Generated evidence is authoritative. |
+| Campaign | Observed result |
+| --- | --- |
+| Ten-case Genesis corpus | 10/10 passed |
+| Permanent subtraction regression | Passed; 132-byte counterexample retained |
+| Native P-field differential | 500,000 deterministic randomized pairs passed |
+| Fixed-width canonical encoding | 200,000 parse decisions passed |
+| SHA-256 text round trips | 100,000 passed |
+| N-order circuit differential | 852 addition and 852 subtraction pairs passed |
+| N-order range relation | 1,081 operand pairs passed |
+| Published development proofs | Two verified; both one-limb public-input mutations rejected |
+| Clean-checkout reproduction | All 14 Genesis evidence files matched byte-for-byte |
 
-Aggregate index SHA-256: **pending generated run**
+Frozen source revision:
+`85ecc97c026b01b576d735501795951dd293b3ca`
 
-Source revision: **pending generated run**
+Genesis manifest record SHA-256:
+`bd9ec111888ec32e87a5b60776f0118973848e5c096bbed8f25246e7fd3008cd`
 
-Toolchain fingerprint: **pending generated run**
+Tool/source record SHA-256:
+`62a5b9406dffc5228e15317d2f27f7534709a05080ae7946584dddbb869974bd`
+
+Development-proof record SHA-256:
+`18dd205d46186ab6e1aa650eb24d24284df44164abf67cd57d94ececdb83c972`
+
+These results are structured empirical evidence. They are not exhaustive proof of correctness,
+formal verification, external certification, or production approval.
 
 ## 10. Promotion and stop conditions
 

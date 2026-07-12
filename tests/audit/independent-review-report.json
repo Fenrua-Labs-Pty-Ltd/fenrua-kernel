@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "fenrua.pn521.independent-review.v1",
+  "reviewId": "fenrua-pn521-initial-independent-review-2026-07-12",
+  "reviewDateUtc": "2026-07-12",
+  "primitive": "P/N521",
+  "status": "pass",
+  "revision": {
+    "bedrockSourceCommit": "85ecc97c026b01b576d735501795951dd293b3ca",
+    "bedrockGitTree": "d3f5e376def63a46a0b76c96f8887a90dbb17f25",
+    "sourceDateEpoch": "1783855096",
+    "sourceDateEpochUtc": "2026-07-12T11:18:16.000Z",
+    "evidenceModel": "The bedrock commit fixes source and tools. A second evidence commit publishes generated reports, public proof artifacts, the security log, and this review."
+  },
+  "verdict": {
+    "findings": 7,
+    "resolvedFindings": 7,
+    "unresolvedFindings": 0,
+    "releaseBlockers": 0,
+    "statement": "No unresolved correctness, statement-binding, evidence-integrity, dependency, build, or publication-packaging finding remains within the declared research scope."
+  },
+  "scope": [
+    "Native P521 field arithmetic and canonical 66-byte encoding",
+    "Lowercase SHA-256 value parsing and evidence artifact binding",
+    "Mesh state transition evidence retention",
+    "N521 modular add/subtract and r/s range Circom relations",
+    "Public-input binding in development Groth16 proofs",
+    "Genesis report generation, canonical JSON, SHA-256 manifests, and verification",
+    "RapidSnark/Circom development proof publication and tamper verification",
+    "CMake build, install package, and downstream consumer integration",
+    "Pinned dependency graph, static analysis, and secret scanning"
+  ],
+  "reviewedSourceSha256": [
+    {"path": ".github/workflows/verify.yml", "sha256": "77bd8113657339d08d27cbee3aeac6e50e8fb1e53a9e7750fc0fa21a4ac7ce60", "layer": "evidence"},
+    {"path": ".gitignore", "sha256": "01245fbf96cd418f10d6e590fece100c79d86e2e4f87616074bb89fb28105115", "layer": "evidence"},
+    {"path": "CMakeLists.txt", "sha256": "3cd738244950c7b3d14eb3c8c280e55c13c20f73ff1a496842cb1ab315cb1e1b", "layer": "bedrock"},
+    {"path": "cmake/fenrua_kernelConfig.cmake.in", "sha256": "6e7d6dce9e496fa4429a453fc4e153c0f0d6474dd1c7f3c7f8a00e0dc6e6e3e9", "layer": "bedrock"},
+    {"path": "include/fenrua/evidence/sha256_digest.hpp", "sha256": "70a1135e8214e055a5cd563f92907fc19abb34db6bbf15e984e34b3fd4054737", "layer": "bedrock"},
+    {"path": "include/fenrua/kernel/research_interfaces.hpp", "sha256": "24a78219fded07f2c19261db35a10a447b856b8137f605e86d8547e59cbfc89d", "layer": "bedrock"},
+    {"path": "include/fenrua/mesh/state_machine.hpp", "sha256": "2136ee7df76020b3bf26737986ca3ab9d90ae6722a4c89aaead5a3a9e74f3dcd", "layer": "bedrock"},
+    {"path": "include/fenrua/p521/field_element.hpp", "sha256": "f210c5f3ad267e0aa2f060db4b61dc7d5d0655a448dea5b1b9ae04c2ad205934", "layer": "bedrock"},
+    {"path": "kernel/research_interfaces.cpp", "sha256": "ec56ffb1cfcef86b8e25a3ed0619a04fde36f5ea710e1efff91d7cddd5c74749", "layer": "bedrock"},
+    {"path": "lib/p521_field_element.cpp", "sha256": "3133e81efb3c21a3a99de40fb80ce4c172ed2bca9d1a5c9d147ce7a034a3d015", "layer": "bedrock"},
+    {"path": "lib/sha256_digest.cpp", "sha256": "e4dbc0b9a2350420908aa67cdfeee692895f4b02667f5464e26a5ad8a04d7001", "layer": "bedrock"},
+    {"path": "mesh/state_machine.cpp", "sha256": "00265cc7a532c2eeba9c7c55afc06bee48f92f66064d3707238e33c350f849f8", "layer": "bedrock"},
+    {"path": "kernel/circuits/big_add.circom", "sha256": "64266ead4c131610186f362abc6b1ac889af17cd1b29dee8d7a32382a6d46844", "layer": "bedrock"},
+    {"path": "kernel/circuits/big_sub.circom", "sha256": "67bacafee6427c50b2059306848a331fa15ffb8e3b9945c4b90df0ecdb903d1e", "layer": "bedrock"},
+    {"path": "kernel/circuits/p521_big_add.circom", "sha256": "cf83deefeed9370bca07c569b50659181fb7a927d98617d45e6caf752a2ffaf5", "layer": "bedrock"},
+    {"path": "kernel/circuits/p521_big_sub.circom", "sha256": "ee31587be8c73f436a325616467df09ed54cf1200ae2af974fffb0a49b1198f4", "layer": "bedrock"},
+    {"path": "kernel/circuits/p521_signature_range.circom", "sha256": "715122df893000111ab098a2cd1249cfb7c53f2baac5030b9e6c30b5d0c1f1a1", "layer": "bedrock"},
+    {"path": "package.json", "sha256": "96c5fb3b0f8366e21eb5f793a6d5aca78626d10fb228ddacb1c02c4f60dc00cd", "layer": "bedrock"},
+    {"path": "pnpm-workspace.yaml", "sha256": "33da17e2673445b45d2ab9ab9e7ad2b32f38704a6e15d967b6189c3c76698962", "layer": "bedrock"},
+    {"path": "pnpm-lock.yaml", "sha256": "0ddae10166f5fbc27106243fbb25df631478947e94b36b6d0804302c8723f7e3", "layer": "bedrock"},
+    {"path": "tests/genesis-cases.mjs", "sha256": "9a5cf33c10ea9aadf7c52854b3dcb0f2089c40afa6347ba201c4aa05e41954ef", "layer": "bedrock"},
+    {"path": "tests/regression-cases.mjs", "sha256": "8d93ad8e8f5a4d7d8452117c3a58ff7d0c8291a100279558d1bcad3d23b753b7", "layer": "bedrock"},
+    {"path": "tests/independent_pn521_differential.cpp", "sha256": "d97ef9fd501ba0459fecf80ba735725a9d31d3d7e312a6d49b4876b2b30fae44", "layer": "bedrock"},
+    {"path": "tests/audit/independent_circuit_differential.cjs", "sha256": "5ca0cd257093b5ae7f2b61f7c8b120d11a0b3c9964deaaeb7d24c41da754f955", "layer": "bedrock"},
+    {"path": "tests/audit/independent_range_differential.cjs", "sha256": "71e841bf3c0ca4ec45d347640b90a3e5e2ac84f1f2bec499e71c71a744dd34bd", "layer": "bedrock"},
+    {"path": "tools/canonical-json.mjs", "sha256": "337c333a8511da908419bd1d1e4cc1b536441da46d2fdc5ff46027130225c662", "layer": "bedrock"},
+    {"path": "tools/evidence-sources.mjs", "sha256": "ac5ea559d1d2710edbf447eac3e662982025c86fb0faa50223f1d263ebdbf139", "layer": "bedrock"},
+    {"path": "tools/pn521-reference.mjs", "sha256": "4aaaadbed683defc55bca3b1a1c758e675bbe534951e72169854e914b2b770d3", "layer": "bedrock"},
+    {"path": "tools/build.mjs", "sha256": "919d844cf3467e988484569ffe4a7e212f02314f823ee3244ca0a070bb0ac406", "layer": "bedrock"},
+    {"path": "tools/run-genesis.mjs", "sha256": "4fd45b9468dbfd3b2d90f64fa3ae5c8479394a848ac27f792e84168a4f138853", "layer": "bedrock"},
+    {"path": "tools/prove.mjs", "sha256": "de3856a180651785653fa4d5ccd6dbce8af44c19a61e7a9d89733f52db8221f5", "layer": "bedrock"},
+    {"path": "tools/verify-evidence.mjs", "sha256": "d58c52601b1dac0d22ad86bc8b005ed7862d8e0eb45507d375004afd1997a328", "layer": "bedrock"},
+    {"path": "tools/verify-proofs.mjs", "sha256": "0fd7e6dcff369af749ad93475b603bca6f09ff015e5edd70fa82c87ce21d3f7b", "layer": "bedrock"}
+  ],
+  "tools": [
+    {"id": "node", "version": "v24.18.0", "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"},
+    {"id": "cxx", "version": "GNU C++ 15.2.0 via ccache", "sha256": "7d2751d15c9155129623875208b244eba175d6a75f3c4d2ff21bac8f613f09bd"},
+    {"id": "cmake", "version": "4.2.3", "sha256": "6e1dccda39845415d68eabb934c598998949c99ec4668625d571aee1827b05c7"},
+    {"id": "circom", "version": "2.2.3", "sha256": "607d3d8d5b2a58f00434c054b59e6842dc472d48d6a93e51ac7521d49a39e27c"},
+    {"id": "circomspect", "version": "0.9.0", "sha256": "c70cb2fd5f25aa1055fcf95e30dee3f2410b93313fe4825d7210b9ee4857d7c5"},
+    {"id": "pnpm", "version": "11.11.0", "sha256": "7c2a67995976b5b592b611d8b236e3b0633bd654fb49aedd96c6eb7ce04c9cbb"},
+    {"id": "snarkjs-cli", "version": "0.7.6", "sha256": "6d787e37a4d1a2c6dd6032dadca09c0b3b007d4d4578bb6232a98136555d051a"},
+    {"id": "rapidsnark", "version": "no-version-flag", "sha256": "1bf0a8ce2d7dc8a527573f0b109b13c8e0421925028591269fb51d4838035df7"},
+    {"id": "semgrep", "version": "1.169.0", "sha256": "3bc54d204f89ce8f92b42ee15e5087ad4a547cdc0277dc81dd159f315786b508"},
+    {"id": "trivy-image", "version": "0.70.0", "sha256": "be1190afcb28352bfddc4ddeb71470835d16462af68d310f9f4bca710961a41e"}
+  ],
+  "campaigns": [
+    {
+      "id": "native-sanitized-differential",
+      "status": "pass",
+      "result": "500000 randomized field pairs, 200000 canonical byte parse decisions, 100000 digest round trips, boundaries, and selected mesh transitions passed with no ASan/UBSan/leak diagnostic.",
+      "seed": "0x46454e525541",
+      "instrumentedBinarySha256": "e07b05cfbf95a4a521371bb541fc52a40440e8d1dafdc0b17c35ce02cf47001e"
+    },
+    {
+      "id": "n521-circuit-differential",
+      "status": "pass",
+      "result": "852 addition and 852 subtraction pairs passed against an independent BigInt oracle.",
+      "seed": "0x46454e525541",
+      "outputLogSha256": "f3c411b72f7fd00a0612c21dc2bab9e19c6a40fca84f4c64977dc00b84e73041"
+    },
+    {
+      "id": "n521-range-differential",
+      "status": "pass",
+      "result": "1081 pairs matched the exact 1 <= r,s < n predicate.",
+      "seed": "0x46454e525541",
+      "outputLogSha256": "385afb730a8492de1af4f68cdb95c304d1d2ef1f0871aafb1d0e1f161f4c05e2"
+    },
+    {
+      "id": "fresh-circuit-compilation",
+      "status": "pass",
+      "circuits": [
+        {"name": "p521_big_add", "constraints": 6463, "wires": 6380, "publicInputs": 18, "privateInputs": 0, "outputs": 10, "r1csSha256": "98b2a68d0c587577448d579df81a5c060a41e969ff24e52f4ae28fc76e2b28b3", "wasmSha256": "583de208a204bd1a14731a657f4c5d511b3f9f615edcc9fb68dd0249046dbd6e"},
+        {"name": "p521_big_sub", "constraints": 4711, "wires": 4654, "publicInputs": 18, "privateInputs": 0, "outputs": 10, "r1csSha256": "3988353d7aeb48e0b0083f0bd3556f48cf2820b7a5ab00e2ecc1dcb1c45ea9e2", "wasmSha256": "e7cd68a2c7121ba49f1331b9439ff8e1926aa535055d30c38132b4a58c09c27d"},
+        {"name": "p521_signature_range", "constraints": 3529, "wires": 3494, "publicInputs": 18, "privateInputs": 0, "outputs": 1, "r1csSha256": "5282371c43be013cf662f4735ee24000ab44966f610c18c3e4406adfabce796c", "wasmSha256": "e6075aa8d05794591d145b282bce3b4bdc1452fda4cc6e9805691a9a67212f87"}
+      ]
+    },
+    {
+      "id": "cmake-build-install-consumer",
+      "status": "pass",
+      "result": "Clean Ninja release build passed; CTest 2/2 passed; clean install and downstream find_package consumer configured, linked, and ran.",
+      "binaries": {
+        "librarySha256": "d84b7b02ebcf215813aaddfadbeb7d66eed80b1dfc6231301cb8e78d94335cd0",
+        "nativeTestSha256": "6cd8cb79d4163b271627bf5c6a5957f9792f6685d5fa0ce9eafd401b5ac596b6",
+        "differentialTestSha256": "cc1f660fc3ba674c5faf1cc6fc948cc27f9256c8663ad4ed4b6a45dd5cf7c42f",
+        "consumerSha256": "2be4c4913de732b1672f3717757d37f0cda2649b4f8f9461c6abe3138f8b2273"
+      }
+    },
+    {
+      "id": "genesis-verification",
+      "status": "pass",
+      "result": "Portable and same-host verification each passed 10/10 Genesis cases plus the permanent regression.",
+      "portableLogSha256": "a154440b177ea11da160cfbfb119bd0ae3df35497c10b4180a476fd948692076",
+      "sameHostLogSha256": "4ed52bae4dabff7a5873244ffd650403ece4a4f1de9143c554888f312acbcc94"
+    },
+    {
+      "id": "proof-verification-and-public-tamper",
+      "status": "pass",
+      "result": "Both published proofs verified; changing one public operand limb caused rejection for both.",
+      "outputLogSha256": "1c983c51a45706d6c5c29c908419b7c37836aafce89cdf0670c1a0b4e09d3efe"
+    },
+    {
+      "id": "clean-checkout-reproduction",
+      "status": "pass",
+      "result": "A detached clean checkout of the bedrock commit regenerated all 14 Genesis report files byte-for-byte with SOURCE_DATE_EPOCH=1783855096."
+    },
+    {
+      "id": "dependency-audit",
+      "status": "pass",
+      "command": "pnpm audit --audit-level low",
+      "result": "No known vulnerabilities found.",
+      "outputLogSha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955"
+    },
+    {
+      "id": "circomspect",
+      "status": "pass",
+      "command": "circomspect --level WARNING --library node_modules kernel/circuits/p521_big_add.circom kernel/circuits/p521_big_sub.circom kernel/circuits/p521_signature_range.circom",
+      "result": "No issues found.",
+      "outputLogSha256": "71b1845509765f1b97cc01274d3d7a23f33fed69647a957d5c6f2dc736d6318b"
+    },
+    {
+      "id": "semgrep-default",
+      "status": "pass",
+      "result": "240 applicable rules ran over 46 tracked files with 0 findings and 0 errors.",
+      "reportSha256": "285e873fdce937bdbc5672aaa015b009c8f4db16e2f63ee71404f5fc304ae3fa"
+    },
+    {
+      "id": "trivy-secret",
+      "status": "pass",
+      "result": "Pinned Trivy 0.70.0 scanned the intended bedrock plus public evidence layer with 0 secrets.",
+      "reportSha256": "13ae4522a8e4a63484572a1b3974b831eef94de9ec1d23105026bdda5bc1dc73"
+    }
+  ],
+  "genesisEvidence": {
+    "status": "pass",
+    "caseCount": 10,
+    "passedCount": 10,
+    "failedCount": 0,
+    "manifest": {"path": "tests/genesis/reports/manifest.json", "recordSha256": "bd9ec111888ec32e87a5b60776f0118973848e5c096bbed8f25246e7fd3008cd", "fileSha256": "5888bc67ab9ea7008e52fbdea3ce5f6bb0177b8ac52528cc7a5fcc7c8dc5ab6c", "fileBytes": 5799},
+    "aggregate": {"path": "tests/genesis/reports/genesis-report.json", "recordSha256": "a25a9e1c53b5554fb0b518d0ea54810dcdc7252b8742fe5ca76060f41c4f7960", "fileSha256": "5a1a130f33fbf77cfa36ed9771eeba63a570d27fe347a43e2524d404e55b04b3", "fileBytes": 9064},
+    "toolSource": {"path": "tests/genesis/reports/tool-source-hashes.json", "recordSha256": "62a5b9406dffc5228e15317d2f27f7534709a05080ae7946584dddbb869974bd", "fileSha256": "b9b2f22b68878ea646ae4197cfc456f2ed1902965011ecd83bf86d00bdd3aefc", "fileBytes": 6332},
+    "cases": [
+      {"caseId": "genesis-01-field-zero-canonical", "recordSha256": "51db94b77ef70d87f2d539646d5302a8d7c61f259d34adfb1505143a1f75a1d2", "fileSha256": "b28aac482b8eb7ac4a323ba69137e40136d674a564f796f33cd78b76fd767d8e", "fileBytes": 1564},
+      {"caseId": "genesis-02-field-max-canonical", "recordSha256": "b5683185b5ff108f9c3dfa67525fa09dd8356f35ba7e3288ff9921dcd264fbf0", "fileSha256": "e20ec5bed2e63c1599696c8d590741c7d6bba98db14614ad683ecb304fe91363", "fileBytes": 1563},
+      {"caseId": "genesis-03-field-modulus-rejected", "recordSha256": "f178d3247e7f57b1649fb1484c269b894daffec05f575692a33c2232fffbf8ec", "fileSha256": "88eb3d2baf7046f89f5e64a391f2caf308bb3264be5d526acb194695551d6a9c", "fileBytes": 1303},
+      {"caseId": "genesis-04-field-top-bit-overflow-rejected", "recordSha256": "ddbc5163d37dffeb497dbcd6a4187a51c1ab66839a05d98481791cb5202fbb3c", "fileSha256": "b62ed573b3015fef3c7593316e41578e6f37276b72ebc21ed3554b269b6ff7aa", "fileBytes": 1312},
+      {"caseId": "genesis-05-field-add-wrap", "recordSha256": "51d216bbbc485acdc917dc27f875abf23e559a8d5dae214037bdb187e528bba4", "fileSha256": "b64c2645566033839fa11226b2447558bc41ea4ffd33fd72ed4dd104e9e1b8f1", "fileBytes": 1702},
+      {"caseId": "genesis-06-field-sub-underflow", "recordSha256": "050b685031bd881e8a897fb5c8192b13c3538b39fd660d6f149ba0b4e0dd0ff7", "fileSha256": "78ff94127ae9abe3e2f148e74c962980b27fdcff4b4718859b99407ee063ac5a", "fileBytes": 1712},
+      {"caseId": "genesis-07-order-one-canonical", "recordSha256": "80ceee14984dd252586a55ec29cb73984d992fd624fa028261026f80f1c24a19", "fileSha256": "7cdbafd8c137d0acfcfd6ca4777126cb7901dfc93d5bb74599db9e7c5d0a5650", "fileBytes": 1739},
+      {"caseId": "genesis-08-order-modulus-rejected", "recordSha256": "e50e44fe1fe093e6bf9b6e493653c0d0c7f6e6ce92d305c248204f9b8216e555", "fileSha256": "b48aea043659df37961b4ea9e80c78382c56ecbe3fef918962f856598e3776a4", "fileBytes": 1895},
+      {"caseId": "genesis-09-order-add-exact-wrap", "recordSha256": "25b851cde77d5ca04281bd0189bee1d91f66b19e642c500c5d86856164ed34b2", "fileSha256": "feb7463daadcff08c0f7a873c4249c11ec2589c04d6d4da63c180fdbb38e19a1", "fileBytes": 2191},
+      {"caseId": "genesis-10-order-sub-underflow", "recordSha256": "df9a9d9c3445825d4e9889b06b785d850103e9611be2d0cb8804d6e732221a67", "fileSha256": "281f0ade18479a292b2066a70cfd30af17b1cb10e4836e2eccc6ff33b386a634", "fileBytes": 2337}
+    ],
+    "regression": {"regressionId": "regression-order-sub-cross-limb-borrow", "recordSha256": "a5c49db6dd40bee3185399b622ff5eb7845501d0a725e7aa561204766a19abfa", "fileSha256": "c7a2de386f54f74de0ff9e8b3147882035d08bf69f1cfbef78467d5099267cc0", "fileBytes": 2643, "fixtureSha256": "7d11e62691085056fde7193c23cc7b3ffbfde2171807f820fc94cecf6f19ee5e", "fixtureBytes": 132}
+  },
+  "proofEvidence": {
+    "status": "pass",
+    "report": {"path": "tests/proofs/evidence/development-proof-report.json", "recordSha256": "18dd205d46186ab6e1aa650eb24d24284df44164abf67cd57d94ececdb83c972", "fileSha256": "dc0e57616768fab98dfb3003902ec06cd51658e3eda3b9edf219022ccbbb4087", "fileBytes": 21876},
+    "publicArtifacts": [
+      {"path": "tests/proofs/evidence/artifacts/p521_big_add_verification_key.json", "sha256": "0f734d015e454885f10a9909da85a761288bf19a7ef25b4117153eb7a5cd9861", "bytes": 7859},
+      {"path": "tests/proofs/evidence/artifacts/genesis-09-order-add-exact-wrap.proof.json", "sha256": "81beae36546f507ab81467c8f72489a198851214c76290888fdbf1ca5e3fce60", "bytes": 708},
+      {"path": "tests/proofs/evidence/artifacts/genesis-09-order-add-exact-wrap.public.json", "sha256": "ce1922cf9bec6ae98b603de19fe1180af9686bee813ff03bdf379cc0bcbc8d15", "bytes": 264},
+      {"path": "tests/proofs/evidence/artifacts/genesis-09-order-add-exact-wrap.tampered-public.json", "sha256": "48e19bd9f56c12b18a44362964df031785a26a5a218fd682a72927cad1703554", "bytes": 350},
+      {"path": "tests/proofs/evidence/artifacts/p521_big_sub_verification_key.json", "sha256": "7fec5bdbd42416be39cf7aaba2daa421eb80546fe6c52b25f61cbdd866b34209", "bytes": 7864},
+      {"path": "tests/proofs/evidence/artifacts/genesis-10-order-sub-underflow.proof.json", "sha256": "bdeb245c4a1458a862c6bf936c7e8b4431d912e787e5888fa1547497e08a6d1b", "bytes": 706},
+      {"path": "tests/proofs/evidence/artifacts/genesis-10-order-sub-underflow.public.json", "sha256": "489d2ba98ea58f581808f79d75258b1837857518187221a37168ea1dc0638483", "bytes": 264},
+      {"path": "tests/proofs/evidence/artifacts/genesis-10-order-sub-underflow.tampered-public.json", "sha256": "3f1c5854ee054f320c2a9be428e034b226e8ec40fd3a469311d1c6b773c1af44", "bytes": 350}
+    ],
+    "trustBoundary": "The ceremony is local, single-machine, and deliberately uses known development entropy. These artifacts demonstrate plumbing only and are not production trust material."
+  },
+  "findings": [
+    {"id": "GA-001", "severity": "medium", "title": "EvidenceArtifact permitted bytes/digest mismatch", "status": "resolved", "resolution": "Private construction plus a checked OpenSSL SHA-256 factory and recomputing valid() gate bind the digest to exact bytes."},
+    {"id": "GA-002", "severity": "medium", "title": "Mesh Transition lost causal event and evidence digest", "status": "resolved", "resolution": "Accepted and rejected transitions retain EventType and optional evidence digest with the state decision."},
+    {"id": "GA-003", "severity": "low-medium", "title": "SHA-256 text parser accepted uppercase aliases", "status": "resolved", "resolution": "The parser now accepts exactly 64 lowercase hexadecimal characters."},
+    {"id": "GA-004", "severity": "medium", "title": "Installed CMake target was not discoverable", "status": "resolved", "resolution": "Config, compatible-version, exported target, and OpenSSL dependency files are installed; a clean downstream consumer passes."},
+    {"id": "GA-005", "severity": "high", "title": "N-order subtraction false-rejected a valid cross-limb borrow", "status": "resolved", "resolution": "Subtraction and conditional modulus addition use independent constrained borrow/carry phases.", "regressionFixtureSha256": "7d11e62691085056fde7193c23cc7b3ffbfde2171807f820fc94cecf6f19ee5e"},
+    {"id": "GA-006", "severity": "high", "title": "Proof statements did not bind arithmetic operands", "status": "resolved", "resolution": "All 18 operand limbs are public inputs in add, subtract, and range top-level circuits; valid proofs pass and one-limb substitutions fail."},
+    {"id": "GA-007", "severity": "medium tooling risk; upstream advisory high", "title": "Vulnerable transitive development dependency", "status": "resolved", "advisory": "GHSA-qpx9-hpmf-5gmw", "dependencyPath": "snarkjs@0.7.6 -> bfj@7.1.0 -> jsonpath@1.3.0 -> underscore", "resolution": "Root pnpm override and direct development pin resolve underscore 1.13.8; the committed lockfile and final audit report zero known vulnerabilities."}
+  ],
+  "preCommitReleaseCorrections": [
+    {"title": "Public proof evidence was hidden by an unanchored artifacts/ ignore rule", "status": "resolved", "resolution": "The ignore rule is anchored as /artifacts/, so all eight public proof JSON artifacts are Git-visible while root proving material remains ignored."},
+    {"title": "Dependency audit was absent from CI", "status": "resolved", "resolution": "The pinned workflow now runs pnpm audit --audit-level high before build and evidence verification."}
+  ],
+  "limitations": [
+    "This is an empirical independent review, not formal verification or an external production-security certification.",
+    "The current relations bind arithmetic operands but no message, execution context, agent identity, or authorization decision.",
+    "The mesh layer is a deterministic local reducer, not a validator network, quorum protocol, replay defense, or authenticated global log.",
+    "No constant-time or side-channel assurance is claimed.",
+    "The published Groth16 setup is research-only and must not be reused for production trust."
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "schema": "fenrua.final-build-validation.v1",
+  "subject": {
+    "repository": "fenrua-kernel",
+    "frozenCommit": "85ecc97c026b01b576d735501795951dd293b3ca",
+    "frozenTree": "d3f5e376def63a46a0b76c96f8887a90dbb17f25",
+    "buildRelevantSourcesMatchFrozenCommit": true,
+    "buildRelevantDiffCommand": "git diff --exit-code -- CMakeLists.txt cmake/fenrua_kernelConfig.cmake.in include kernel lib mesh tests/native_kernel_test.cpp tests/independent_pn521_differential.cpp tests/cmake_consumer",
+    "buildRelevantDiffExitCode": 0
+  },
+  "environment": {
+    "tools": [
+      {
+        "name": "cmake",
+        "invokedPath": "/usr/bin/cmake",
+        "resolvedPath": "/usr/bin/cmake",
+        "version": "4.2.3",
+        "sha256": "6e1dccda39845415d68eabb934c598998949c99ec4668625d571aee1827b05c7"
+      },
+      {
+        "name": "ctest",
+        "invokedPath": "/usr/bin/ctest",
+        "resolvedPath": "/usr/bin/ctest",
+        "version": "4.2.3",
+        "sha256": "2cf8308ae2235efcae86a2eba443444f33ab611193a84092de33ec16836f5f17"
+      },
+      {
+        "name": "c++ launcher",
+        "invokedPath": "/usr/lib/ccache/c++",
+        "resolvedPath": "/usr/bin/ccache",
+        "version": "ccache 4.12.3",
+        "sha256": "7d2751d15c9155129623875208b244eba175d6a75f3c4d2ff21bac8f613f09bd"
+      },
+      {
+        "name": "GNU C++ compiler",
+        "invokedPath": "c++ through ccache",
+        "resolvedPath": "/usr/bin/x86_64-linux-gnu-g++-15",
+        "version": "15.2.0",
+        "sha256": "e6718f7e0c7d057c3ff77b550c603da9bc4030e3ede3c053705acce1293dbe4d"
+      },
+      {
+        "name": "ninja",
+        "invokedPath": "/usr/bin/ninja",
+        "resolvedPath": "/usr/bin/ninja",
+        "version": "1.13.2",
+        "sha256": "91e9548850cda2799facfdaa7abe33f9e978832f85e98212255708a7bbe437f2"
+      },
+      {
+        "name": "openssl",
+        "invokedPath": "/usr/bin/openssl",
+        "resolvedPath": "/usr/bin/openssl",
+        "version": "3.5.5 27 Jan 2026",
+        "sha256": "ea5d64b538860f9c0ad341ee7b2cc8a8111ca1f3cd4060d73dca3aa7282301d1"
+      },
+      {
+        "name": "sha256sum",
+        "invokedPath": "/usr/bin/sha256sum",
+        "resolvedPath": "/usr/lib/cargo/bin/coreutils/sha256sum",
+        "version": "uutils coreutils 0.8.0",
+        "sha256": "48893b0fb21436b54619db80486e83ef39dfccaf1aefe83dfa00c02d6146e8c0"
+      }
+    ],
+    "dependencies": {
+      "opensslCrypto": "3.5.5",
+      "boostMultiprecisionHeaderFound": true
+    }
+  },
+  "commands": [
+    {
+      "id": "clean",
+      "command": "rm -rf /tmp/fenrua-frozen-cmake-build /tmp/fenrua-frozen-install /tmp/fenrua-frozen-consumer-build /tmp/fenrua-frozen-asan-differential",
+      "exitCode": 0
+    },
+    {
+      "id": "configure",
+      "command": "cmake -S . -B /tmp/fenrua-frozen-cmake-build -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON",
+      "exitCode": 0
+    },
+    {
+      "id": "build",
+      "command": "cmake --build /tmp/fenrua-frozen-cmake-build --parallel",
+      "exitCode": 0
+    },
+    {
+      "id": "ctest",
+      "command": "ctest --test-dir /tmp/fenrua-frozen-cmake-build --output-on-failure --verbose",
+      "exitCode": 0
+    },
+    {
+      "id": "install",
+      "command": "cmake --install /tmp/fenrua-frozen-cmake-build --prefix /tmp/fenrua-frozen-install",
+      "exitCode": 0
+    },
+    {
+      "id": "consumer-configure",
+      "command": "cmake -S tests/cmake_consumer -B /tmp/fenrua-frozen-consumer-build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/tmp/fenrua-frozen-install",
+      "exitCode": 0
+    },
+    {
+      "id": "consumer-build",
+      "command": "cmake --build /tmp/fenrua-frozen-consumer-build --parallel",
+      "exitCode": 0
+    },
+    {
+      "id": "consumer-run",
+      "command": "/tmp/fenrua-frozen-consumer-build/fenrua_kernel_consumer",
+      "exitCode": 0
+    },
+    {
+      "id": "sanitizer-compile",
+      "command": "c++ -std=c++20 -O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wmisleading-indentation -Werror -Iinclude tests/independent_pn521_differential.cpp lib/p521_field_element.cpp lib/sha256_digest.cpp mesh/state_machine.cpp -lcrypto -o /tmp/fenrua-frozen-asan-differential",
+      "exitCode": 0
+    },
+    {
+      "id": "sanitizer-run",
+      "command": "ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1 /tmp/fenrua-frozen-asan-differential",
+      "exitCode": 0
+    },
+    {
+      "id": "source-and-binary-hashes",
+      "command": "sha256sum CMakeLists.txt cmake/fenrua_kernelConfig.cmake.in include/fenrua/evidence/sha256_digest.hpp include/fenrua/kernel/research_interfaces.hpp include/fenrua/mesh/state_machine.hpp include/fenrua/p521/field_element.hpp kernel/research_interfaces.cpp lib/p521_field_element.cpp lib/sha256_digest.cpp mesh/state_machine.cpp tests/native_kernel_test.cpp tests/independent_pn521_differential.cpp tests/cmake_consumer/CMakeLists.txt tests/cmake_consumer/main.cpp /tmp/fenrua-frozen-cmake-build/libfenrua_kernel.a /tmp/fenrua-frozen-cmake-build/fenrua_kernel_tests /tmp/fenrua-frozen-cmake-build/fenrua_kernel_differential_tests /tmp/fenrua-frozen-install/lib/libfenrua_kernel.a /tmp/fenrua-frozen-consumer-build/fenrua_kernel_consumer /tmp/fenrua-frozen-asan-differential",
+      "exitCode": 0
+    }
+  ],
+  "sourceSha256": {
+    "CMakeLists.txt": "3cd738244950c7b3d14eb3c8c280e55c13c20f73ff1a496842cb1ab315cb1e1b",
+    "cmake/fenrua_kernelConfig.cmake.in": "6e7d6dce9e496fa4429a453fc4e153c0f0d6474dd1c7f3c7f8a00e0dc6e6e3e9",
+    "include/fenrua/evidence/sha256_digest.hpp": "70a1135e8214e055a5cd563f92907fc19abb34db6bbf15e984e34b3fd4054737",
+    "include/fenrua/kernel/research_interfaces.hpp": "24a78219fded07f2c19261db35a10a447b856b8137f605e86d8547e59cbfc89d",
+    "include/fenrua/mesh/state_machine.hpp": "2136ee7df76020b3bf26737986ca3ab9d90ae6722a4c89aaead5a3a9e74f3dcd",
+    "include/fenrua/p521/field_element.hpp": "f210c5f3ad267e0aa2f060db4b61dc7d5d0655a448dea5b1b9ae04c2ad205934",
+    "kernel/research_interfaces.cpp": "ec56ffb1cfcef86b8e25a3ed0619a04fde36f5ea710e1efff91d7cddd5c74749",
+    "lib/p521_field_element.cpp": "3133e81efb3c21a3a99de40fb80ce4c172ed2bca9d1a5c9d147ce7a034a3d015",
+    "lib/sha256_digest.cpp": "e4dbc0b9a2350420908aa67cdfeee692895f4b02667f5464e26a5ad8a04d7001",
+    "mesh/state_machine.cpp": "00265cc7a532c2eeba9c7c55afc06bee48f92f66064d3707238e33c350f849f8",
+    "tests/native_kernel_test.cpp": "dbc3103ca8895c5cacc04a357c69788626ec92e697c4617900845c0ef1552177",
+    "tests/independent_pn521_differential.cpp": "d97ef9fd501ba0459fecf80ba735725a9d31d3d7e312a6d49b4876b2b30fae44",
+    "tests/cmake_consumer/CMakeLists.txt": "a3ba4133fa419260d663e9c3f64bdefb896e6cc56527bc19ea13e6edfea96e59",
+    "tests/cmake_consumer/main.cpp": "e58638e2ba3618f907750379fe04748c6c630d661676998af010a5064a167ab8",
+    "orderedManifest": "cd7f34d518a02c592d116e959942c16bb5d5e6c88f52b4d3a7b652d3e7ca46b2"
+  },
+  "binarySha256": {
+    "/tmp/fenrua-frozen-cmake-build/libfenrua_kernel.a": "d84b7b02ebcf215813aaddfadbeb7d66eed80b1dfc6231301cb8e78d94335cd0",
+    "/tmp/fenrua-frozen-cmake-build/fenrua_kernel_tests": "6cd8cb79d4163b271627bf5c6a5957f9792f6685d5fa0ce9eafd401b5ac596b6",
+    "/tmp/fenrua-frozen-cmake-build/fenrua_kernel_differential_tests": "cc1f660fc3ba674c5faf1cc6fc948cc27f9256c8663ad4ed4b6a45dd5cf7c42f",
+    "/tmp/fenrua-frozen-install/lib/libfenrua_kernel.a": "d84b7b02ebcf215813aaddfadbeb7d66eed80b1dfc6231301cb8e78d94335cd0",
+    "/tmp/fenrua-frozen-consumer-build/fenrua_kernel_consumer": "2be4c4913de732b1672f3717757d37f0cda2649b4f8f9461c6abe3138f8b2273",
+    "/tmp/fenrua-frozen-asan-differential": "e07b05cfbf95a4a521371bb541fc52a40440e8d1dafdc0b17c35ce02cf47001e"
+  },
+  "campaigns": {
+    "cmakeBuild": {
+      "configuration": "Release",
+      "generator": "Ninja",
+      "targetsBuilt": 9,
+      "compilerDiagnostics": 0,
+      "result": "pass"
+    },
+    "ctest": {
+      "registered": 2,
+      "passed": 2,
+      "failed": 0,
+      "totalSeconds": 1.09,
+      "tests": [
+        {
+          "name": "fenrua_kernel_native",
+          "namedChecks": 19,
+          "passedChecks": 19,
+          "failedChecks": 0,
+          "result": "pass"
+        },
+        {
+          "name": "fenrua_kernel_differential",
+          "seedHex": "0x46454e525541",
+          "randomizedFieldPairs": 500000,
+          "byteEncodings": 200000,
+          "digestRoundtrips": 100000,
+          "meshPaths": "selected",
+          "result": "pass"
+        }
+      ]
+    },
+    "installedPackageConsumer": {
+      "findPackageConfigRequired": true,
+      "configured": true,
+      "built": true,
+      "runExitCode": 0,
+      "result": "pass"
+    },
+    "sanitizerDifferential": {
+      "seedHex": "0x46454e525541",
+      "randomizedFieldPairs": 500000,
+      "byteEncodings": 200000,
+      "digestRoundtrips": 100000,
+      "meshPaths": "selected",
+      "addressSanitizer": true,
+      "undefinedBehaviorSanitizer": true,
+      "leakDetection": true,
+      "warningsAsErrors": true,
+      "compilerWarnings": 0,
+      "sanitizerDiagnostics": 0,
+      "runSeconds": 16.755690388,
+      "result": "pass"
+    }
+  },
+  "verdict": {
+    "status": "pass",
+    "blockers": [],
+    "summary": "Clean build, native and differential tests, installed-package consumption, and strict ASan/UBSan differential validation all passed at the frozen source commit."
+  }
+}
