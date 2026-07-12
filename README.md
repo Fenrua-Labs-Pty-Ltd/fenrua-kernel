@@ -142,7 +142,7 @@ SHA-256 `18dd205d46186ab6e1aa650eb24d24284df44164abf67cd57d94ececdb83c972`.
 See the [security audit log](SECURITY_AUDIT_LOG.md) for seven resolved findings and the remaining
 research-to-production gates. The machine-readable
 [independent review report](tests/audit/independent-review-report.json) has file SHA-256
-`f7ea51f2e89f4fdc055bbcf491d6e4527c7c2011a3c3da2b5297b66bf64ce9b6`.
+`9d9eeffceda4478356229bc2f3686aca3cf69744838b887b3bbc403639dff0d5`.
 
 These are structured empirical campaigns, not exhaustive proof of correctness or a production
 security certification.

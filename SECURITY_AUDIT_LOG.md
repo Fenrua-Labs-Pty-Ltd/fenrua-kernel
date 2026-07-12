@@ -197,7 +197,7 @@ oracle failure.
 - Regression fixture SHA-256:
   `7d11e62691085056fde7193c23cc7b3ffbfde2171807f820fc94cecf6f19ee5e`
 - Independent review report file SHA-256:
-  `f7ea51f2e89f4fdc055bbcf491d6e4527c7c2011a3c3da2b5297b66bf64ce9b6`
+  `9d9eeffceda4478356229bc2f3686aca3cf69744838b887b3bbc403639dff0d5`
 - Final build-validation report file SHA-256:
   `e74a0ad32730f5129f3f691eb3c9caab31a98596212594d218056e50a1a26c93`
 - Final security-scan report file SHA-256:

@@ -30,7 +30,7 @@
     "Pinned dependency graph, static analysis, and secret scanning"
   ],
   "reviewedSourceSha256": [
-    {"path": ".github/workflows/verify.yml", "sha256": "77bd8113657339d08d27cbee3aeac6e50e8fb1e53a9e7750fc0fa21a4ac7ce60", "layer": "evidence"},
+    {"path": ".github/workflows/verify.yml", "sha256": "91c8d8610a3e294f54c3762902ba57ea8b1082ef7c7075b90e4b52ba7644d06c", "layer": "evidence"},
     {"path": ".gitignore", "sha256": "01245fbf96cd418f10d6e590fece100c79d86e2e4f87616074bb89fb28105115", "layer": "evidence"},
     {"path": "CMakeLists.txt", "sha256": "3cd738244950c7b3d14eb3c8c280e55c13c20f73ff1a496842cb1ab315cb1e1b", "layer": "bedrock"},
     {"path": "cmake/fenrua_kernelConfig.cmake.in", "sha256": "6e7d6dce9e496fa4429a453fc4e153c0f0d6474dd1c7f3c7f8a00e0dc6e6e3e9", "layer": "bedrock"},
@@ -211,7 +211,8 @@
   ],
   "preCommitReleaseCorrections": [
     {"title": "Public proof evidence was hidden by an unanchored artifacts/ ignore rule", "status": "resolved", "resolution": "The ignore rule is anchored as /artifacts/, so all eight public proof JSON artifacts are Git-visible while root proving material remains ignored."},
-    {"title": "Dependency audit was absent from CI", "status": "resolved", "resolution": "The pinned workflow now runs pnpm audit --audit-level high before build and evidence verification."}
+    {"title": "Dependency audit was absent from CI", "status": "resolved", "resolution": "The pinned workflow now runs pnpm audit --audit-level high before build and evidence verification."},
+    {"title": "Pinned GitHub Actions used the deprecated Node 20 action runtime", "status": "resolved", "resolution": "The workflow now pins actions/checkout v7.0.0 and actions/setup-node v6.4.0 by immutable commit SHA; both declare the Node 24 action runtime."}
   ],
   "limitations": [
     "This is an empirical independent review, not formal verification or an external production-security certification.",
