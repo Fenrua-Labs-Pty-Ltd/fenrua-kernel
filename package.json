@@ -1,0 +1,26 @@
+{
+  "name": "@fenrua/kernel",
+  "version": "0.1.0-research",
+  "private": false,
+  "description": "Evidence-first utility-kernel research for Fenrua P/N521 limb arithmetic, Circom constraints, and deterministic node primitives.",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@11.11.0",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test": "node tools/run-genesis.mjs",
+    "prove": "node tools/prove.mjs",
+    "evidence": "node tools/verify-evidence.mjs && node tools/verify-proofs.mjs",
+    "evidence:genesis": "node tools/verify-evidence.mjs",
+    "evidence:proofs": "node tools/verify-proofs.mjs",
+    "evidence:same-host": "node tools/verify-evidence.mjs --same-host && node tools/verify-proofs.mjs",
+    "evidence:verify": "node tools/verify-evidence.mjs && node tools/verify-proofs.mjs"
+  },
+  "devDependencies": {
+    "circomlib": "2.0.5",
+    "snarkjs": "0.7.6",
+    "underscore": "1.13.8"
+  }
+}

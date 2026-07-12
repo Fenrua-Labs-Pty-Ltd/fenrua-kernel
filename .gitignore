@@ -1,0 +1,27 @@
+# Dependency and native build output
+node_modules/
+build/
+.cache/
+
+# Generated proving material; never publish development ceremony secrets.
+artifacts/
+*.ptau
+*.zkey
+*.wtns
+*.r1cs
+*.sym
+*.wasm
+
+# Local credentials and editor state
+.env
+.env.*
+!.env.example
+local-secrets/
+.idea/
+.vscode/
+*.swp
+*.tmp
+
+# Platform output
+.DS_Store
+Thumbs.db

@@ -1,0 +1,76 @@
+name: Feature proposal
+description: Propose a scoped capability, experiment, or specification change.
+title: "[FEATURE] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fenrua Kernel favors small, auditable utilities with measurable acceptance criteria.
+        A proposal should preserve deterministic evidence and the research-to-production gates.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What concrete limitation or research question does this address?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Describe the smallest interface or behavior change that solves the problem.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Primary layer
+      options:
+        - Specification
+        - Native arithmetic
+        - Circuit or witness generation
+        - Proof pipeline
+        - Mesh or node state
+        - Evidence and test tooling
+        - Documentation
+    validations:
+      required: true
+
+  - type: textarea
+    id: invariants
+    attributes:
+      label: Invariants and compatibility
+      description: Which encodings, domain separators, hashes, failure modes, or interfaces must remain unchanged?
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance evidence
+      description: List deterministic tests, negative cases, benchmarks, and SHA-256 artifacts that would demonstrate completion.
+    validations:
+      required: true
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: Security and research risks
+      description: Explain new trust assumptions, side channels, proof-system assumptions, interoperability risks, and likely failure modes.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Boundary checks
+      options:
+        - label: This proposal does not treat passing tests as a production-security audit.
+          required: true
+        - label: Any wire-format change includes a versioning and migration plan.
+          required: true

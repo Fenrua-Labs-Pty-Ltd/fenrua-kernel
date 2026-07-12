@@ -1,0 +1,82 @@
+name: Verify
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      CIRCOM_VERSION: 2.2.3
+      CIRCOM_LINUX_AMD64_SHA256: 85342c7ff332d948df7c0c50ecf201e6129349aef550ce873f3c811b79fe53a3
+      PNPM_VERSION: 11.11.0
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24.18.0
+
+      - name: Install native prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends \
+            build-essential \
+            ca-certificates \
+            cmake \
+            curl \
+            libboost-dev \
+            libssl-dev \
+            openssl
+
+      - name: Install checksum-pinned Circom
+        shell: bash
+        run: |
+          set -euo pipefail
+          asset="circom-linux-amd64"
+          curl --fail --location --silent --show-error \
+            --output "${RUNNER_TEMP}/${asset}" \
+            "https://github.com/iden3/circom/releases/download/v${CIRCOM_VERSION}/${asset}"
+          echo "${CIRCOM_LINUX_AMD64_SHA256}  ${RUNNER_TEMP}/${asset}" | sha256sum --check --strict
+          install -D --mode=0755 "${RUNNER_TEMP}/${asset}" "${HOME}/.local/bin/circom"
+          echo "${HOME}/.local/bin" >> "${GITHUB_PATH}"
+          test "$("${HOME}/.local/bin/circom" --version)" = "circom compiler ${CIRCOM_VERSION}"
+
+      - name: Install pinned pnpm
+        shell: bash
+        run: |
+          set -euo pipefail
+          corepack enable
+          corepack prepare "pnpm@${PNPM_VERSION}" --activate
+          test "$(pnpm --version)" = "${PNPM_VERSION}"
+
+      - name: Install JavaScript dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Run native and differential CTest suite
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Verify checked-in Genesis evidence
+        run: pnpm run evidence
+
+      - name: Generate ten-case Genesis evidence
+        run: pnpm run test
+
+      - name: Verify freshly generated evidence
+        run: pnpm run evidence

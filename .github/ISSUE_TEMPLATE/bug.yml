@@ -1,0 +1,88 @@
+name: Bug report
+description: Report reproducible behavior that differs from the documented kernel contract.
+title: "[BUG] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping make Fenrua Kernel reproducible. Remove secrets, private keys,
+        unpublished witnesses, and sensitive validator data before submitting.
+
+  - type: input
+    id: version
+    attributes:
+      label: Revision
+      description: Commit SHA, release tag, or exact source snapshot.
+      placeholder: 0123456789abcdef...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - Native P/N521 arithmetic
+        - Circuit or witness generation
+        - Proof pipeline
+        - Mesh or node state
+        - Test vectors or SHA-256 evidence
+        - Documentation
+        - Build or tooling
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+      description: State exactly what happened, including the full error when safe to share.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: Cite the specification, invariant, or test expectation that should hold.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Include commands, public inputs, and deterministic steps. Redact no value that changes the result.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, architecture, compiler/runtime versions, Circom and prover versions, and relevant feature flags.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence hashes
+      description: Provide SHA-256 digests and byte lengths for any attached report, vector, proof, or witness-safe artifact.
+      placeholder: sha256  bytes  path-or-description
+
+  - type: checkboxes
+    id: declarations
+    attributes:
+      label: Submission checks
+      options:
+        - label: I reproduced this from the named revision.
+          required: true
+        - label: This report contains no secret material or sensitive vulnerability details.
+          required: true
+        - label: I understand that current P/N521 and proof-system code is research-grade and not approved for production authorization.
+          required: true

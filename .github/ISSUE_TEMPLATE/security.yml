@@ -1,0 +1,84 @@
+name: Security concern (public-safe only)
+description: Report non-sensitive hardening concerns; use private reporting for exploitable findings.
+title: "[SECURITY] "
+labels:
+  - security
+body:
+  - type: markdown
+    attributes:
+      value: |
+        STOP if the report could enable exploitation, reveal a secret, bypass verification,
+        compromise a validator, forge a proof, or affect assets. Do not open a public issue.
+        Use the repository Security tab and its private vulnerability-reporting path instead.
+
+        This form is only for public-safe hardening, threat-model gaps, and documentation concerns.
+
+  - type: checkboxes
+    id: public_safe
+    attributes:
+      label: Public disclosure check
+      options:
+        - label: This report is safe to disclose publicly and contains no exploit recipe, secret, private witness, or live-system identifier.
+          required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Threat-model or documentation gap
+        - Unsafe default or configuration
+        - Input validation or canonical encoding
+        - Arithmetic or constraint concern
+        - Proof or trusted-setup concern
+        - Mesh or state-machine hardening
+        - Dependency or supply-chain concern
+        - Side-channel concern
+        - Other public-safe concern
+    validations:
+      required: true
+
+  - type: input
+    id: revision
+    attributes:
+      label: Affected revision
+      placeholder: Commit SHA or release tag
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Public-safe summary
+      description: Describe the concern without publishing exploitation details.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Potential impact
+      options:
+        - Documentation or assurance only
+        - Incorrect rejection (false negative)
+        - Incorrect acceptance (false positive)
+        - Availability or resource exhaustion
+        - Privacy or metadata exposure
+        - Integrity or state divergence
+        - Unknown
+    validations:
+      required: true
+
+  - type: textarea
+    id: mitigation
+    attributes:
+      label: Suggested safe next step
+      description: Give a containment, test, or review step that is itself safe to publish.
+
+  - type: checkboxes
+    id: research_status
+    attributes:
+      label: Research status
+      options:
+        - label: I understand this repository is research-grade and must not secure funds, identities, consensus, or authorization without independent review and an explicit release decision.
+          required: true
