@@ -1,10 +1,20 @@
 {
   "name": "@fenrua/sdk",
   "version": "0.1.0-research",
-  "description": "Thin TypeScript SDK for Fenrua Kernel - prove and verify with one-liners",
+  "description": "Thin TypeScript façade over the Fenrua Kernel evidence pipelines (Genesis, development proofs, evidence verification). Research-grade only.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
     "example": "node --loader ts-node/esm example.ts"
@@ -12,7 +22,8 @@
   "dependencies": {},
   "devDependencies": {
     "typescript": "^5.5.0",
-    "ts-node": "^10.9.0"
+    "ts-node": "^10.9.0",
+    "@types/node": "^20.0.0"
   },
   "engines": {
     "node": ">=20"
@@ -20,6 +31,14 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Fenrua-Labs-Pty-Ltd/fenrua-kernel.git"
-  }
+    "url": "https://github.com/Fenrua-Labs-Pty-Ltd/fenrua-kernel.git",
+    "directory": "sdk"
+  },
+  "keywords": [
+    "fenrua",
+    "pn521",
+    "research",
+    "evidence",
+    "zero-knowledge"
+  ]
 }
