@@ -69,17 +69,14 @@ jobs:
       - name: Audit dependency graph
         run: pnpm audit --audit-level high
 
+      # SDK is intentionally not a pnpm workspace member so the root lockfile
+      # stays frozen. Typecheck it as a nested package with its own devDeps.
       - name: Typecheck SDK
         working-directory: sdk
         run: |
           set -euo pipefail
-          # Prefer workspace-hoisted TypeScript when available; otherwise install locally.
-          if [ -x ../node_modules/.bin/tsc ]; then
-            ../node_modules/.bin/tsc --noEmit
-          else
-            npm install --ignore-scripts
-            npx tsc --noEmit
-          fi
+          npm install --ignore-scripts
+          npx tsc --noEmit
 
       - name: Build
         run: pnpm run build

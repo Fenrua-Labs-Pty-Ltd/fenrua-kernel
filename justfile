@@ -24,8 +24,9 @@ evidence-same-host:
   pnpm run evidence:same-host
 
 # Typecheck / emit the thin TypeScript SDK (sdk/dist).
+# SDK is a nested package, not a pnpm workspace member (keeps root lockfile frozen).
 sdk-build:
-  cd sdk && (test -x ../node_modules/.bin/tsc && ../node_modules/.bin/tsc || (npm install --ignore-scripts && npx tsc))
+  cd sdk && npm install --ignore-scripts && npx tsc
 
 # Run the SDK example against the real kernel pipelines (requires prior just test/prove as needed).
 sdk-example:
