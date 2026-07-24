@@ -142,12 +142,15 @@ function runNodeTool(
 // Report readers (structured JSON already produced by the kernel tools)
 // ---------------------------------------------------------------------------
 
-export interface IntegrityEnvelope<T> {
+export interface IntegrityEnvelope<T = Record<string, unknown>> {
   record: T;
   integrity: { sha256: string; [key: string]: unknown };
 }
 
-function readEnvelope<T>(filePath: string, label: string): IntegrityEnvelope<T> {
+function readEnvelope<T = Record<string, unknown>>(
+  filePath: string,
+  label: string
+): IntegrityEnvelope<T> {
   if (!fs.existsSync(filePath)) {
     throw new Error(`${label} is missing: ${filePath}. Run the corresponding kernel command first.`);
   }
@@ -158,25 +161,31 @@ function readEnvelope<T>(filePath: string, label: string): IntegrityEnvelope<T> 
   return envelope;
 }
 
-export function readGenesisManifest(kernelRoot?: string) {
+export function readGenesisManifest(
+  kernelRoot?: string
+): IntegrityEnvelope<Record<string, unknown>> {
   const root = kernelRoot ?? findKernelRoot();
-  return readEnvelope(
+  return readEnvelope<Record<string, unknown>>(
     path.join(root, "tests/genesis/reports/manifest.json"),
     "Genesis manifest"
   );
 }
 
-export function readGenesisReport(kernelRoot?: string) {
+export function readGenesisReport(
+  kernelRoot?: string
+): IntegrityEnvelope<Record<string, unknown>> {
   const root = kernelRoot ?? findKernelRoot();
-  return readEnvelope(
+  return readEnvelope<Record<string, unknown>>(
     path.join(root, "tests/genesis/reports/genesis-report.json"),
     "Genesis aggregate report"
   );
 }
 
-export function readDevelopmentProofReport(kernelRoot?: string) {
+export function readDevelopmentProofReport(
+  kernelRoot?: string
+): IntegrityEnvelope<Record<string, unknown>> {
   const root = kernelRoot ?? findKernelRoot();
-  return readEnvelope(
+  return readEnvelope<Record<string, unknown>>(
     path.join(root, "tests/proofs/evidence/development-proof-report.json"),
     "Development proof report"
   );
