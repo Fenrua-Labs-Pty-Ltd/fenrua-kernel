@@ -70,6 +70,7 @@ side-channel assessment, and an explicit release decision tied to exact source a
     ├── kernel/    circuits, witness generation, and core verification logic
     ├── mesh/      validator communication and node state machine
     ├── lib/       native limb-based arithmetic
+    ├── sdk/       thin TypeScript façade over the real evidence pipelines
     ├── tests/     ten Genesis cases, reports, and SHA-256 evidence
     ├── tools/     Circom, RapidSnark, and evidence-pipeline helpers
     └── justfile   reproducible command entry points
@@ -81,6 +82,7 @@ Each layer has a narrow job:
 | Native | P/N521 limb arithmetic and canonical encoding | Constant-time or audited behavior |
 | Kernel | Witnesses, versioned P/N521 relations, proofs, and receipts | Authorization from relation satisfaction |
 | Mesh | Versioned receipt transport and deterministic state | Cryptographic validity from quorum |
+| SDK | Typed wrappers for Genesis, development proofs, and evidence verify | A general-purpose prove/verify API |
 | Tests | Positive, boundary, and adversarial P/N521 evidence | Exhaustive security coverage |
 | Tools | Pinned orchestration and artifact hashing | Trust in an unrecorded local environment |
 
@@ -155,9 +157,15 @@ The repository exposes a small command surface:
     just test
     just prove
     just evidence
+    just sdk-build
+    just sdk-example
 
 Use the command descriptions in the justfile as the executable contract. A skipped dependency or
 proof stage must be reported as skipped or failed, never passed.
+
+The thin TypeScript SDK under `sdk/` wraps the same three pipelines (`runGenesis`,
+`generateDevelopmentProofs`, `verifyEvidence`). It is research-grade only and does not add a
+general-purpose prove/verify API. See [sdk/README.md](sdk/README.md).
 
 ## Open challenge
 
