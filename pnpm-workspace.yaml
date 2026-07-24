@@ -1,2 +1,6 @@
+packages:
+  - '.'
+  - 'sdk'
+
 overrides:
   underscore: 1.13.8

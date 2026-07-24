@@ -3,6 +3,10 @@ node_modules/
 build/
 .cache/
 
+# SDK package output (built from sdk/src)
+sdk/dist/
+sdk/node_modules/
+
 # Generated proving material; never publish development ceremony secrets.
 /artifacts/
 *.ptau

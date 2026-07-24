@@ -22,3 +22,11 @@ evidence:
 # Re-run evidence verification while requiring this exact Node/OS host.
 evidence-same-host:
   pnpm run evidence:same-host
+
+# Typecheck / emit the thin TypeScript SDK (sdk/dist).
+sdk-build:
+  cd sdk && (test -x ../node_modules/.bin/tsc && ../node_modules/.bin/tsc || (npm install --ignore-scripts && npx tsc))
+
+# Run the SDK example against the real kernel pipelines (requires prior just test/prove as needed).
+sdk-example:
+  cd sdk && npm install --ignore-scripts && npx tsc && node --loader ts-node/esm example.ts
