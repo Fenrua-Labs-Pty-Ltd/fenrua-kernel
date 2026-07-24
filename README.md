@@ -157,15 +157,14 @@ The repository exposes a small command surface:
     just test
     just prove
     just evidence
-    just sdk-build
-    just sdk-example
 
 Use the command descriptions in the justfile as the executable contract. A skipped dependency or
 proof stage must be reported as skipped or failed, never passed.
 
 The thin TypeScript SDK under `sdk/` wraps the same three pipelines (`runGenesis`,
 `generateDevelopmentProofs`, `verifyEvidence`). It is research-grade only and does not add a
-general-purpose prove/verify API. See [sdk/README.md](sdk/README.md).
+general-purpose prove/verify API. Build and example commands live in [sdk/README.md](sdk/README.md).
+(`justfile` is evidence-bound; do not add SDK targets there without regenerating Genesis reports.)
 
 ## Open challenge
 
